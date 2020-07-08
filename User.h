@@ -35,6 +35,8 @@ public:
 
     void printAllChats();
 
+    bool noChats();
+
 private:
     std::string realName;
     std::vector<Chat> chats;

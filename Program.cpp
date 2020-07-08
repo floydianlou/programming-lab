@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <limits>
 #include "Program.h"
 
 void Program::addUser(User *newuser) {
@@ -53,6 +52,10 @@ void Program::choices() {
         case 2: {
             int chatNum;
             currentUser->printAllChats();
+            if(currentUser->noChats()) {
+                std::cout << "Taking user back to main menu." << std::endl;
+                choices();
+                break; }
             std::cout << "Which chat would you like to open? Insert below:" << std::endl; std::cin >> chatNum;
             cinFail();
             currentUser->openchat(chatNum);

@@ -19,12 +19,18 @@ void User::addChat(Chat chat) {
 }
 
 void User::printAllChats() {
-    int i = 1;
+    if (chats.empty()) {
+        std::cout << "There are currently no chats in your account." << std::endl;
+    } else { int i = 1;
     for(auto itr : chats) {
         std::cout << "Chat n. " << i << std::endl;
         itr.printInfo();
-        i++;
+        i++; }
     }
+}
+
+bool User::noChats() {
+    return chats.empty();
 }
 
 void User::openchat(int number) {
@@ -39,9 +45,14 @@ void User::openchat(int number) {
 }
 
 void User::getUnreadChats() {
+    int count = 0;
     for (auto itr : chats) {
         if (!itr.getLastMessage().isRead()) {
             itr.printInfo();
+        } else {
+            count++;
         }
+    } if (count == chats.size()) {
+        std::cout << std::endl << "There are no unread messages nor chats." << std::endl;
     }
 }
