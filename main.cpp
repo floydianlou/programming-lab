@@ -2,8 +2,12 @@
 #include "Program.h"
 
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "InfiniteRecursion"
+
 int main() {
     try {
+        // users
     auto alice = new User("Alice");
     auto luca = new User ("Luca");
     auto olivia = new User("Olivia");
@@ -12,12 +16,12 @@ int main() {
     Program program(alice);
 
 
-    auto chat1 = new Chat (*alice, *luca, "amore <3");
+    auto chat1 = new Chat (*alice, *luca, "luca <3");
     auto chat2 = new Chat(*alice, *olivia, "mamma <3");
     auto chat3 = new Chat(*margherita, *olivia, "Mamma");
     auto chat4 = new Chat (*margherita, *alice, "Sorella");
 
-    auto text1 = new Message("Alice", "Luca", "Ciao amore, come va?");
+    auto text1 = new Message("Alice", "Luca", "Ciao amore, sono quasi arrivata!");
     auto text2 = new Message("Luca", "Alice", "Amore, ti sto aspettando alla stazione");
     auto text3 = new Message("Olivia", "Alice", "Stai studiando?");
     auto text4 = new Message("Alice", "Olivia", "Sì, certo...");
@@ -50,6 +54,7 @@ int main() {
     program.addUser(luca);
     program.addUser(olivia);
     program.addUser(margherita);
+
     program.init(); }
 
     catch (std::out_of_range& e) {
@@ -64,3 +69,4 @@ int main() {
     }
 
 }
+#pragma clang diagnostic pop

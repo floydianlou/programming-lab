@@ -14,7 +14,7 @@ class User;
 class Chat {
 public:
 
-    Chat(User sender,User receiver, std::string name);
+    Chat(const User& sender,const User& receiver, std::string name);
 
     virtual ~Chat();
 
@@ -27,6 +27,7 @@ public:
     }
 
     void readMessages();
+
 
     std::string getSenderName();
 

@@ -29,6 +29,7 @@ public:
 
     void addChat(Chat chat);
 
+    void getUnreadChats();
 
     void openchat(int number);
 

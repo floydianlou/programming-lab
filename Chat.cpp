@@ -6,7 +6,7 @@
 #include <iostream>
 #include "Chat.h"
 
-Chat::Chat(User sender, User receiver, std::string name) : senderName(sender.getRealName()), receiverName(receiver.getRealName()), chatName(std::move(name)){}
+Chat::Chat(const User& sender, const User& receiver, std::string name) : senderName(sender.getRealName()), receiverName(receiver.getRealName()), chatName(std::move(name)){}
 
 void Chat::addMessage(Message& text) {
     if((text.getSenderName() == senderName || text.getSenderName() == receiverName) && (text.getReceiverName() == receiverName || text.getReceiverName() == senderName)) {
@@ -25,8 +25,9 @@ void Chat::printInfo() {
 
 void Chat::readMessages() {
     for (auto &chatMessage : chatMessages) {
+        if(!chatMessage.isRead()) {
+        chatMessage.setRead(true); }
         chatMessage.printText();
-        chatMessage.setRead(true);
     }
 }
 

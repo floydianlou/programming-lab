@@ -9,4 +9,6 @@
 
 void timetime(time_t currentTime);
 
+void cinFail();
+
 #endif //PROGRAMMING_LAB_FUNCTIONS_H

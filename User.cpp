@@ -37,3 +37,11 @@ void User::openchat(int number) {
     }
 
 }
+
+void User::getUnreadChats() {
+    for (auto itr : chats) {
+        if (!itr.getLastMessage().isRead()) {
+            itr.printInfo();
+        }
+    }
+}

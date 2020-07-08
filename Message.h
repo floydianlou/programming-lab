@@ -51,9 +51,10 @@ public:
 
     void printText() {
         timetime(currentTime); std::cout << " ";
-        std::cout << "From: " << senderName << std::endl;
+        std::cout << "From: " << senderName << " - Read (0/1): " << read << std::endl;
         std::cout << messageText << std::endl;
     }
+
 
 private:
     std::string senderName;
