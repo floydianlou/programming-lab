@@ -24,7 +24,6 @@ void Program::init() {
         login();
     } else {
         throw std::out_of_range ("No correct choice was made.");
-        //TODO manage exception
     }
 }
 

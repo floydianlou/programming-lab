@@ -43,3 +43,7 @@ std::string Chat::getChatName() {
     return chatName;
 }
 
+Chat::~Chat() {
+
+}
+
