@@ -13,8 +13,9 @@
 class Message {
 public:
 
-    Message(std::string sender, std::string receiver, std::string text, bool isread = false) : senderName(std::move(sender)), receiverName(std::move(receiver)), messageText(std::move(text)), read(isread) {
-    time(&currentTime);
+    Message(std::string sender, std::string receiver, std::string text, bool isread = , int ID) : senderName(
+            sender), receiverName(receiver), messageText(text), read(isread), messageID(ID) {
+        time(&currentTime);
     }
 
     std::string getSenderName() const {
@@ -38,19 +39,19 @@ public:
     }
 
 
-
     bool operator==(const Message &right) const {
         return senderName == right.senderName &&
                receiverName == right.receiverName &&
                messageText == right.messageText;
     }
 
-    bool operator!=(const Message & right) const {
-        return !(right ==*this);
+    bool operator!=(const Message &right) const {
+        return !(right == *this);
     }
 
     void printText() {
-        timetime(currentTime); std::cout << " ";
+        std::string time = timeToString(currentTime);
+        std::cout << time << " ";
         std::cout << "From: " << senderName << " - Read (0/1): " << read << std::endl;
         std::cout << messageText << std::endl;
     }
@@ -62,6 +63,7 @@ private:
     std::string messageText;
     bool read;
     time_t currentTime;
+    int messageID;
 };
 
 #endif //PROGRAMMING_LAB_MESSAGE_H

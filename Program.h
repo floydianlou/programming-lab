@@ -12,24 +12,30 @@
 class Program {
 public:
 
-    explicit Program(User * use) : currentUser(use) {
+    explicit Program(User *use) : currentUser(use) {
         ::time(&currentTime);
         allUsers.insert(std::make_pair(currentUser->getRealName(), currentUser));
     }
 
-    void addUser(User * newuser);
-    void init();
+    void addUser(User *newuser);
+
+    bool loginChoice(std::string choice);
+
+    User *getCurrentUser() const;
+
+    time_t getCurrentTime() const;
 
     virtual ~Program();
 
 protected:
 
-    void choices();
+
     void mainMenu();
+
     void login();
 
 private:
-    User * currentUser;
+    User *currentUser;
     time_t currentTime;
     std::map<std::string, User *> allUsers;
 };

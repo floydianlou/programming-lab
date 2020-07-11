@@ -7,7 +7,7 @@
 
 #include <ctime>
 
-void timetime(time_t currentTime);
+std::string timeToString(time_t currentTime);
 
 void cinFail();
 

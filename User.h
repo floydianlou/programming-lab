@@ -11,16 +11,17 @@
 #include "Chat.h"
 
 class Chat;
+
 class User {
 public:
-    explicit User (std::string name = "") : realName(std::move(name)) {}
+    explicit User(std::string name = "") : realName(name) {}
 
-    virtual ~User() { }
+    ~User() {}
 
     void changeUsername();
 
-    void setRealName(const std::string &realName) {
-        User::realName = realName;
+    void setRealName(const std::string name) {
+        User::realName = name;
     }
 
     std::string getRealName() const {

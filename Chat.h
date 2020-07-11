@@ -14,15 +14,15 @@ class User;
 class Chat {
 public:
 
-    Chat(const User& sender,const User& receiver, std::string name);
+    Chat(const User &sender, const User &receiver, std::string name);
 
     virtual ~Chat();
 
-    void addMessage (Message& text);
+    void addMessage(Message &text);
 
     void printInfo();
 
-    Message& getLastMessage() {
+    Message &getLastMessage() {
         return chatMessages.back();
     }
 
