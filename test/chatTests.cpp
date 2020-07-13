@@ -15,11 +15,11 @@ TEST(Chat, GettersSetters){
     ASSERT_EQ(chat.getChatName(), "<3");
 }
 
-TEST(Chat, functions){
-    Message m ("Alice", "Luca", "Hey, come va?");
-    Message x ("Olivia", "Margherita", "Hey, come va?");
-    chat.addMessage(m);
-    ASSERT_EQ(chat.getLastMessage(), m);
-    ASSERT_THROW(chat.addMessage(x), std::invalid_argument);
-
-}
+//TEST(Chat, functions){
+//    Message m ("Alice", "Luca", "Hey, come va?");
+//    Message x ("Olivia", "Margherita", "Hey, come va?");
+//    chat.addMessage(m);
+//    ASSERT_EQ(chat.getLastMessage(), m);
+//    ASSERT_THROW(chat.addMessage(x), std::invalid_argument);
+//
+//}

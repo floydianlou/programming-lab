@@ -9,6 +9,6 @@
 User user1 ("Alice");
 Program program(&user1);
 
-TEST(Program, tests) {
-    ASSERT_THROW(program.init(), std::out_of_range);
-}
+//TEST(Program, tests) {
+//    ASSERT_THROW(program.init(), std::out_of_range);
+//}

@@ -28,13 +28,17 @@ public:
         return realName;
     }
 
+    int numberOfChats() {
+        return chats.size();
+    }
+
     void addChat(Chat chat);
 
-    void getUnreadChats();
+    int getNumOfUnreadChats();
 
     void openchat(int number);
 
-    void printAllChats();
+    Chat openAChat(int number);
 
     bool noChats();
 

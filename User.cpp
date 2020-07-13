@@ -7,7 +7,7 @@
 #include "User.h"
 
 
-void User::changeUsername() {
+void User::changeUsername() { //TODO high level function not in class
     std::string newName;
     std::cout << "Enter your new username: ";
     std::cin >> newName;
@@ -19,24 +19,20 @@ void User::addChat(Chat chat) {
     chats.push_back(chat);
 }
 
-void User::printAllChats() {
-    if (chats.empty()) {
-        std::cout << "There are currently no chats in your account." << std::endl;
-    } else {
-        int i = 1;
-        for (auto itr : chats) {
-            std::cout << "Chat n. " << i << std::endl;
-            itr.printInfo();
-            i++;
+Chat User::openAChat(int number) {
+        if (number >= 0 && number < chats.size()) {
+            return chats[number];
+        } else {
+            throw std::out_of_range("Could not find requested chat.");
         }
+
     }
-}
 
 bool User::noChats() {
     return chats.empty();
 }
 
-void User::openchat(int number) {
+void User::openchat(int number) { //TODO modify method
     number--;
     if (number >= 0 && number < chats.size()) {
         chats[number].readMessages();
@@ -48,16 +44,11 @@ void User::openchat(int number) {
 
 }
 
-void User::getUnreadChats() {
+int User::getNumOfUnreadChats() {
     int count = 0;
     for (auto itr : chats) {
-        if (!itr.getLastMessage().isRead()) {
-            itr.printInfo();
-        } else {
+        if (!itr.getLastMessage().isRead())
             count++;
-        }
     }
-    if (count == chats.size()) {
-        std::cout << std::endl << "There are no unread messages nor chats." << std::endl;
-    }
+    return count;
 }

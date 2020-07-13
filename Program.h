@@ -27,15 +27,10 @@ public:
 
     virtual ~Program();
 
-protected:
-
-
-    void mainMenu();
-
-    void login();
+    bool isUsernameInList (std::string username);
 
 private:
-    User *currentUser;
+    User * currentUser;
     time_t currentTime;
     std::map<std::string, User *> allUsers;
 };

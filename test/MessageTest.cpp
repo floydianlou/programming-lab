@@ -7,12 +7,12 @@
 #include "../Message.h"
 
 
-TEST(Message, GettersSetters) {
-Message m ("Alice", "Luca", "Hey, come va?");
-ASSERT_EQ(m.getSenderName(), "Alice");
-ASSERT_EQ(m.getReceiverName(), "Luca");
-ASSERT_EQ(m.getMessageText(), "Hey, come va?");
-ASSERT_EQ(m.isRead(), false);
-m.setRead(true);
-ASSERT_EQ(m.isRead(), true);
-}
+//TEST(Message, GettersSetters) {
+//Message m ("Alice", "Luca", "Hey, come va?");
+//ASSERT_EQ(m.getSenderName(), "Alice");
+//ASSERT_EQ(m.getReceiverName(), "Luca");
+//ASSERT_EQ(m.getMessageText(), "Hey, come va?");
+//ASSERT_EQ(m.isRead(), false);
+//m.setRead(true);
+//ASSERT_EQ(m.isRead(), true);
+//}

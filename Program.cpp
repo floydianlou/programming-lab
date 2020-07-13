@@ -22,23 +22,16 @@ bool Program::loginChoice(std::string choice) {
 
 
 
-void Program::login() {
-    std::string username;
-    std::cout << "Enter your username: ";
-    std::cin >> username;
+bool Program::isUsernameInList(std::string username) {
     auto itr = allUsers.find(username);
     if (itr != allUsers.end()) {
         currentUser = itr->second;
-        std::cout << "Username found. Accessing main menu." << std::endl;
-        mainMenu();
+        return true;
     } else {
-        std::cout << "Username not found. Creating a new user." << std::endl;
         auto newUser = new User(username);
         addUser(newUser);
         currentUser = newUser;
-        std::cout << "New user added. Accessing main menu." << std::endl;
-        std::cout << "\t\t\t\t\t-----------------------------" << std::endl;
-        mainMenu();
+        return false;
     }
 }
 

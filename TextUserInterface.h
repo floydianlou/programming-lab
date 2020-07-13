@@ -17,6 +17,7 @@ public:
     void beginProgram() override;
     void mainMenu();
     void choices();
+    void login();
 };
 
 #endif //PROGRAMMING_LAB_TEXTUSERINTERFACE_H

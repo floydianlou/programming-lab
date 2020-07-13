@@ -8,12 +8,11 @@
 #include <string>
 #include <iostream>
 #include <ctime>
-#include "functions.h"
 
 class Message {
 public:
 
-    Message(std::string sender, std::string receiver, std::string text, bool isread = , int ID) : senderName(
+    Message(std::string sender, std::string receiver, std::string text, bool isread = false, int ID = 0) : senderName(
             sender), receiverName(receiver), messageText(text), read(isread), messageID(ID) {
         time(&currentTime);
     }
@@ -49,13 +48,11 @@ public:
         return !(right == *this);
     }
 
-    void printText() {
-        std::string time = timeToString(currentTime);
-        std::cout << time << " ";
-        std::cout << "From: " << senderName << " - Read (0/1): " << read << std::endl;
-        std::cout << messageText << std::endl;
-    }
 
+    time_t getCurrentTime() const {
+        return currentTime;
+    }
+//TODO reformat print text
 
 private:
     std::string senderName;

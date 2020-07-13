@@ -24,7 +24,7 @@ void Chat::printInfo() {
     std::cout << "Chat name: " << chatName << std::endl;
     std::cout << "Sender: " << senderName << " - Receiver: " << receiverName << std::endl;
     std::cout << "Last message: ";
-    getLastMessage().printText();
+//    getLastMessage().printText();
     std::cout << std::endl;
 }
 
@@ -33,7 +33,7 @@ void Chat::readMessages() {
         if (!chatMessage.isRead()) {
             chatMessage.setRead(true);
         }
-        chatMessage.printText();
+     //   chatMessage.printText();
     }
 }
 

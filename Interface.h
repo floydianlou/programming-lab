@@ -9,7 +9,7 @@
 
 class Interface {
 public:
-    Interface(Program *prog) : program(prog) {}
+    explicit Interface(Program *prog) : program(prog) {}
 
     virtual void beginProgram() = 0;
 

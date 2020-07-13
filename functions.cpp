@@ -6,6 +6,7 @@
 #include <ctime>
 #include <iostream>
 #include <limits>
+#include "User.h"
 
 std::string timeToString(time_t currentTime) {
     char timey[100];
@@ -23,3 +24,31 @@ void cinFail() {
     }
 }
 
+void printChats(User * user) {
+    if (user->noChats()) {
+        std::cout << "There are currently no chats in your account." << std::endl;
+    } else {
+    for(int i = 0; i < user->numberOfChats(); i++) {
+       auto itr =  user->openAChat(i);
+        std::cout << "Chat name: " << itr.getChatName() << std::endl;
+        std::cout << "Sender: " << itr.getSenderName() << " - Receiver: " << itr.getReceiverName() << std::endl;
+        std::cout << "Last message: ";
+        auto message = itr.getLastMessage();
+        auto time = timeToString(message.getCurrentTime());
+        std::cout << time << " from: " << message.getSenderName() << " - " << message.getMessageText();
+        std::cout << std::endl;
+    } }
+}
+
+void numOfUnreadChats(User *user) {
+    int numberOfChats = user->getNumOfUnreadChats();
+    std::cout << "You have " << numberOfChats << " chats with unread messages." << std::endl;
+    //TODO fix and end
+}
+
+void printMessageInfo(Message *text) {
+    std::string time = timeToString(text->getCurrentTime());
+    std::cout << time << " ";
+    std::cout << "From: " << text->getSenderName() << " - Read (0/1): " << text->isRead() << std::endl;
+    std::cout << text->getMessageText() << std::endl;
+}
