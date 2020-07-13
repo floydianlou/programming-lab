@@ -4,10 +4,10 @@
 
 
 #include "gtest/gtest.h"
-#include "../Program.h"
+#include "../ProgramManager.h"
 
 User user1 ("Alice");
-Program program(&user1);
+ProgramManager program(&user1);
 
 //TEST(Program, tests) {
 //    ASSERT_THROW(program.init(), std::out_of_range);

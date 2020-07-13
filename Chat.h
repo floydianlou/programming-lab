@@ -20,13 +20,18 @@ public:
 
     void addMessage(Message &text);
 
-    void printInfo();
 
-    Message &getLastMessage() {
+    Message * getLastMessage() {
         return chatMessages.back();
     }
 
-    void readMessages();
+    int numberOfMessages() {
+        return chatMessages.size();
+    }
+
+    int numOfUnreadMessages();
+
+    std::_List_iterator<Message *> openMessage();
 
 
     std::string getSenderName();
@@ -37,7 +42,7 @@ public:
 
 
 private:
-    std::vector<Message> chatMessages;
+    std::list<Message*> chatMessages;
     std::string senderName;
     std::string receiverName;
     std::string chatName;

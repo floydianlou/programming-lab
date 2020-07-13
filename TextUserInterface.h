@@ -10,7 +10,7 @@
 class TextUserInterface : public Interface {
 public:
 
-    TextUserInterface(Program * prog) : Interface(prog) {
+    TextUserInterface(ProgramManager * prog) : Interface(prog) {
 
     }
 

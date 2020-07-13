@@ -13,30 +13,31 @@ Chat::Chat(const User &sender, const User &receiver, std::string name) : senderN
 void Chat::addMessage(Message &text) {
     if ((text.getSenderName() == senderName || text.getSenderName() == receiverName) &&
         (text.getReceiverName() == receiverName || text.getReceiverName() == senderName)) {
-        chatMessages.push_back(text);
+        chatMessages.push_back(&text);
     } else {
         throw std::invalid_argument("Sender or receiver don't match.");
     }
 }
 
 
-void Chat::printInfo() {
-    std::cout << "Chat name: " << chatName << std::endl;
-    std::cout << "Sender: " << senderName << " - Receiver: " << receiverName << std::endl;
-    std::cout << "Last message: ";
-//    getLastMessage().printText();
-    std::cout << std::endl;
-}
 
-void Chat::readMessages() {
+std::_List_iterator<Message *> Chat::openMessage() {
     for (auto &chatMessage : chatMessages) {
-        if (!chatMessage.isRead()) {
-            chatMessage.setRead(true);
-        }
-     //   chatMessage.printText();
-    }
+        if (!chatMessage->isRead()) {
+            chatMessage->setRead(true);
+        } }
+       return chatMessages.begin();
 }
 
+int Chat::numOfUnreadMessages() {
+    int count = 0;
+    for (auto itr: chatMessages) {
+        if (!itr->isRead()) {
+            count ++;
+        }
+    }
+    return count;
+}
 
 std::string Chat::getSenderName() {
     return senderName;

@@ -5,11 +5,11 @@
 #ifndef PROGRAMMING_LAB_INTERFACE_H
 #define PROGRAMMING_LAB_INTERFACE_H
 
-#include "Program.h"
+#include "ProgramManager.h"
 
 class Interface {
 public:
-    explicit Interface(Program *prog) : program(prog) {}
+    explicit Interface(ProgramManager *prog) : program(prog) {}
 
     virtual void beginProgram() = 0;
 
@@ -18,7 +18,7 @@ public:
     }
 
 protected:
-    Program * program;
+    ProgramManager * program;
 };
 
 #endif //PROGRAMMING_LAB_INTERFACE_H

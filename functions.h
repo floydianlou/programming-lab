@@ -16,4 +16,12 @@ void numOfUnreadChats (User * user);
 
 void printChats (User * user);
 
+void printChatMessages (User * user, int chatNumber);
+
+bool loginChoice(std::string choice);
+
+void changeUserUsername (std::string newUsername, User * user);
+
+void printUnreadChats (User * user);
+
 #endif //PROGRAMMING_LAB_FUNCTIONS_H

@@ -44,6 +44,10 @@ public:
                messageText == right.messageText;
     }
 
+    int getMessageId() const {
+        return messageID;
+    }
+
     bool operator!=(const Message &right) const {
         return !(right == *this);
     }
@@ -52,7 +56,6 @@ public:
     time_t getCurrentTime() const {
         return currentTime;
     }
-//TODO reformat print text
 
 private:
     std::string senderName;

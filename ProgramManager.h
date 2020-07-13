@@ -2,30 +2,28 @@
 // Created by alice on 02/07/20.
 //
 
-#ifndef PROGRAMMING_LAB_PROGRAM_H
-#define PROGRAMMING_LAB_PROGRAM_H
+#ifndef PROGRAMMING_LAB_PROGRAMMANAGER_H
+#define PROGRAMMING_LAB_PROGRAMMANAGER_H
 
 #include "User.h"
 #include <ctime>
 #include <map>
 
-class Program {
+class ProgramManager {
 public:
 
-    explicit Program(User *use) : currentUser(use) {
+    explicit ProgramManager(User *use) : currentUser(use) {
         ::time(&currentTime);
         allUsers.insert(std::make_pair(currentUser->getRealName(), currentUser));
     }
 
     void addUser(User *newuser);
 
-    bool loginChoice(std::string choice);
-
     User *getCurrentUser() const;
 
     time_t getCurrentTime() const;
 
-    virtual ~Program();
+    virtual ~ProgramManager();
 
     bool isUsernameInList (std::string username);
 
@@ -35,4 +33,4 @@ private:
     std::map<std::string, User *> allUsers;
 };
 
-#endif //PROGRAMMING_LAB_PROGRAM_H
+#endif //PROGRAMMING_LAB_PROGRAMMANAGER_H

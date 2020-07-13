@@ -18,7 +18,6 @@ public:
 
     ~User() {}
 
-    void changeUsername();
 
     void setRealName(const std::string name) {
         User::realName = name;
@@ -32,11 +31,10 @@ public:
         return chats.size();
     }
 
-    void addChat(Chat chat);
+    void addChat(const Chat& chat);
 
     int getNumOfUnreadChats();
 
-    void openchat(int number);
 
     Chat openAChat(int number);
 

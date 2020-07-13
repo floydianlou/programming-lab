@@ -11,7 +11,7 @@ void TextUserInterface::beginProgram() {
     std::cout << "Press A to continue as '" << program->getCurrentUser()->getRealName() << "'." << std::endl
               << "Not you? Press B to change account." << std::endl << std::endl;
     std::cin >> choice;
-    bool whatChoice = program->loginChoice(choice);
+    bool whatChoice = loginChoice(choice);
     if (whatChoice) {
         std::cout << "You chose to continue as " << program->getCurrentUser()->getRealName() << "." << std::endl;
         mainMenu();
@@ -31,6 +31,7 @@ void TextUserInterface::mainMenu() {
 
 void TextUserInterface::choices() {
     int choice;
+    std::cout << "\t\t\t\t\t-----------------------------" << std::endl;
     std::cout << "What would you like to do next?" << std::endl;
     std::cout << "(1) See all chats." << std::endl << "(2) Open a chat." << std::endl << "(3) Log out." << std::endl
               << "(4) Change username." << std::endl;
@@ -40,15 +41,13 @@ void TextUserInterface::choices() {
     switch (choice) {
         case 1: {
             std::cout << "Your account contains the following chats: " << std::endl;
-            //TODO high level function to print chats
             printChats(program->getCurrentUser());
-            std::cout << "\t\t\t\t\t-----------------------------" << std::endl;
             choices();
         }
             break;
         case 2: {
             int chatNum;
-           // program->getCurrentUser()->printAllChats();
+            printChats(program->getCurrentUser());
             if (program->getCurrentUser()->noChats()) {
                 std::cout << "Taking user back to main menu." << std::endl;
                 choices();
@@ -56,8 +55,9 @@ void TextUserInterface::choices() {
             }
             std::cout << "Which chat would you like to open? Insert below:" << std::endl;
             std::cin >> chatNum;
-            cinFail();
-            program->getCurrentUser()->openchat(chatNum); //TODO function
+            cinFail(); chatNum--;
+            std::cout << "Here are the messages contained in the chat: " << std::endl;
+            printChatMessages(program->getCurrentUser(), chatNum);
             choices();
         }
             break;
@@ -67,13 +67,15 @@ void TextUserInterface::choices() {
         }
             break;
         case 4: {
-            program->getCurrentUser()->changeUsername(); //TODO function to change username
+            std::string newName;
+            std::cout << "Enter your new username: "; std::cin >> newName;
+            changeUserUsername(newName, program->getCurrentUser());
             choices();
         }
             break;
         case 5: {
-            std::cout << "Here are your chats with unread messages:" << std::endl;
-           // program->getCurrentUser()->getUnreadChats();
+            numOfUnreadChats(program->getCurrentUser());
+            printUnreadChats(program->getCurrentUser());
             choices();
         }
             break;

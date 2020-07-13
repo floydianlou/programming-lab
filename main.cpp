@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Program.h"
+#include "ProgramManager.h"
 #include "functions.h"
 #include "TextUserInterface.h"
 
@@ -12,7 +12,7 @@ int main() {
     auto luca = new User ("Luca");
     auto olivia = new User("Olivia");
 
-    Program program(alice);
+    ProgramManager program(alice);
     program.addUser(luca);
     auto chat1 = new Chat (*alice, *luca, "luca <3");
     auto chat2 = new Chat(*alice, *olivia, "mamma <3");
