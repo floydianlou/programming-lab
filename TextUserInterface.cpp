@@ -3,6 +3,7 @@
 //
 
 #include "TextUserInterface.h"
+#include "functions.h"
 
 void TextUserInterface::beginProgram() {
     std::string choice;
@@ -16,7 +17,7 @@ void TextUserInterface::beginProgram() {
         mainMenu();
     } else  {
         std::cout << "You chose to change account." << std::endl;
-       //  login();
+       login();
     }
 }
 
@@ -25,7 +26,7 @@ void TextUserInterface::mainMenu() {
     std::cout << std::endl << "It's currently ";
     std::string currentTime = timeToString(program->getCurrentTime());
     std::cout << currentTime << "." << std::endl << std::endl;
-    // choices();
+    choices();
 }
 
 void TextUserInterface::choices() {
@@ -39,14 +40,15 @@ void TextUserInterface::choices() {
     switch (choice) {
         case 1: {
             std::cout << "Your account contains the following chats: " << std::endl;
-            program->getCurrentUser()->printAllChats();
+            //TODO high level function to print chats
+            printChats(program->getCurrentUser());
             std::cout << "\t\t\t\t\t-----------------------------" << std::endl;
             choices();
         }
             break;
         case 2: {
             int chatNum;
-            program->getCurrentUser()->printAllChats();
+           // program->getCurrentUser()->printAllChats();
             if (program->getCurrentUser()->noChats()) {
                 std::cout << "Taking user back to main menu." << std::endl;
                 choices();
@@ -55,7 +57,7 @@ void TextUserInterface::choices() {
             std::cout << "Which chat would you like to open? Insert below:" << std::endl;
             std::cin >> chatNum;
             cinFail();
-            program->getCurrentUser()->openchat(chatNum);
+            program->getCurrentUser()->openchat(chatNum); //TODO function
             choices();
         }
             break;
@@ -65,13 +67,13 @@ void TextUserInterface::choices() {
         }
             break;
         case 4: {
-            program->getCurrentUser()->changeUsername();
+            program->getCurrentUser()->changeUsername(); //TODO function to change username
             choices();
         }
             break;
         case 5: {
             std::cout << "Here are your chats with unread messages:" << std::endl;
-            program->getCurrentUser()->getUnreadChats();
+           // program->getCurrentUser()->getUnreadChats();
             choices();
         }
             break;
@@ -82,4 +84,21 @@ void TextUserInterface::choices() {
             break;
 
     }
+}
+
+void TextUserInterface::login() {
+    std::string username;
+    std::cout << "Enter your username: ";
+    std::cin >> username;
+    bool isUsername = program->isUsernameInList(username);
+    if(isUsername) {
+        std::cout << "Username found. Accessing main menu." << std::endl;
+        mainMenu();
+    } else {
+        std::cout << "Username not found. Creating a new user." << std::endl;
+        std::cout << "New user added. Accessing main menu." << std::endl;
+        std::cout << "\t\t\t\t\t-----------------------------" << std::endl;
+        mainMenu();
+    }
+
 }
