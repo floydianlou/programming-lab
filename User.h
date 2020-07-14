@@ -36,7 +36,7 @@ public:
     int getNumOfUnreadChats();
 
 
-    Chat openAChat(int number);
+    Chat * openAChat(int number);
 
     bool noChats();
 

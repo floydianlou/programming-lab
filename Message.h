@@ -1,3 +1,5 @@
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "modernize-pass-by-value"
 //
 // Created by alice on 02/07/20.
 //
@@ -12,7 +14,7 @@
 class Message {
 public:
 
-    Message(std::string sender, std::string receiver, std::string text, bool isread = false, int ID = 0) : senderName(
+    Message(std::string sender, std::string receiver, std::string text, int ID, bool isread = false) : senderName(
             sender), receiverName(receiver), messageText(text), read(isread), messageID(ID) {
         time(&currentTime);
     }
@@ -67,3 +69,5 @@ private:
 };
 
 #endif //PROGRAMMING_LAB_MESSAGE_H
+
+#pragma clang diagnostic pop

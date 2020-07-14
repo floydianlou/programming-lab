@@ -15,9 +15,19 @@ void TextUserInterface::beginProgram() {
     if (whatChoice) {
         std::cout << "You chose to continue as " << program->getCurrentUser()->getRealName() << "." << std::endl;
         mainMenu();
-    } else  {
+    } else {
         std::cout << "You chose to change account." << std::endl;
-       login();
+        login();
+    }
+}
+
+bool TextUserInterface::noChatsToOpen() {
+    printChats(program->getCurrentUser());
+    if (noChats(program->getCurrentUser())) {
+        std::cout << "Taking user back to main menu." << std::endl;
+        return true;
+    } else {
+        return false;
     }
 }
 
@@ -33,9 +43,11 @@ void TextUserInterface::choices() {
     int choice;
     std::cout << "\t\t\t\t\t-----------------------------" << std::endl;
     std::cout << "What would you like to do next?" << std::endl;
-    std::cout << "(1) See all chats." << std::endl << "(2) Open a chat." << std::endl << "(3) Log out." << std::endl
+    std::cout << "(1) See all chats." << std::endl << "(2) Open a chat." << std::endl << "(3) Get unread chats."
+              << std::endl
               << "(4) Change username." << std::endl;
-    std::cout << "(5) Get unread chats." << std::endl << std::endl << "Insert choice below: " << std::endl;
+    std::cout << "(5) Delete a message." << std::endl;
+    std::cout << "(6) Log out." << std::endl << std::endl << "Insert choice below: " << std::endl;
     std::cin >> choice;
     cinFail();
     switch (choice) {
@@ -47,38 +59,58 @@ void TextUserInterface::choices() {
             break;
         case 2: {
             int chatNum;
-            printChats(program->getCurrentUser());
-            if (program->getCurrentUser()->noChats()) {
-                std::cout << "Taking user back to main menu." << std::endl;
+            if (noChatsToOpen()) {
                 choices();
                 break;
             }
             std::cout << "Which chat would you like to open? Insert below:" << std::endl;
             std::cin >> chatNum;
-            cinFail(); chatNum--;
+            cinFail();
+            chatNum--;
             std::cout << "Here are the messages contained in the chat: " << std::endl;
             printChatMessages(program->getCurrentUser(), chatNum);
             choices();
         }
             break;
         case 3: {
-            std::cout << "Logging out..." << std::endl;
-            std::cout << "See you next time." << std::endl;
-        }
-            break;
-        case 4: {
-            std::string newName;
-            std::cout << "Enter your new username: "; std::cin >> newName;
-            changeUserUsername(newName, program->getCurrentUser());
-            choices();
-        }
-            break;
-        case 5: {
             numOfUnreadChats(program->getCurrentUser());
             printUnreadChats(program->getCurrentUser());
             choices();
         }
             break;
+        case 4: {
+            std::string newName;
+            std::cout << "Enter your new username: ";
+            std::cin >> newName;
+            changeUserUsername(newName, program->getCurrentUser());
+            choices();
+        }
+            break;
+        case 5: {
+            int ChatDelete;
+            int IDDelete;
+            if(noChatsToOpen()) {
+                choices();
+                break;
+            }
+            std::cout << "Insert the chat you would like to delete messages from: ";
+            std::cin >> ChatDelete;
+            cinFail(); ChatDelete--;
+            printChatMessages(program->getCurrentUser(), ChatDelete);
+            std::cout << "What message would you like to delete? Insert by message ID: " << std::endl;
+            std::cin >> IDDelete;
+            deleteAMessage(program->getCurrentUser()->openAChat(ChatDelete), IDDelete);
+            std::cout << "Message with ID " << IDDelete << " deleted." << std::endl;
+            choices();
+
+        }
+        break;
+        case 6: {
+            std::cout << "Logging out..." << std::endl;
+            std::cout << "See you next time." << std::endl;
+        }
+            break;
+
         default: {
             std::cout << "No correct choice was made." << std::endl;
             choices();
@@ -93,7 +125,7 @@ void TextUserInterface::login() {
     std::cout << "Enter your username: ";
     std::cin >> username;
     bool isUsername = program->isUsernameInList(username);
-    if(isUsername) {
+    if (isUsername) {
         std::cout << "Username found. Accessing main menu." << std::endl;
         mainMenu();
     } else {

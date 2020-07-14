@@ -59,7 +59,7 @@ void printChats(User *user) {
         for (int i = 0; i < user->numberOfChats(); i++) {
             auto itr = user->openAChat(i);
             std::cout << "Chat n. " << i + 1 << std::endl;
-            chatInfo(itr);
+            chatInfo(*itr);
         }
     }
 }
@@ -68,11 +68,15 @@ void printUnreadChats (User * user) {
     if(!noChats(user)) {
         for (int i = 0; i < user->numberOfChats(); i++) {
             auto itr = user->openAChat(i);
-            if (itr.numOfUnreadMessages() > 0) {
-                chatInfo(itr);
+            if (itr->numOfUnreadMessages() > 0) {
+                chatInfo(*itr);
             }
         }
     }
+}
+
+void deleteAMessage(Chat * chat, int IDNum) {
+    chat->deleteMessage(IDNum);
 }
 
 
@@ -84,15 +88,16 @@ void numOfUnreadChats(User *user) {
 void printMessageInfo(Message *text) {
     std::string time = timeToString(text->getCurrentTime());
     std::cout << time << " ";
-    std::cout << "From: " << text->getSenderName() << " - Read (0/1): " << text->isRead() << std::endl;
+    std::cout << "From: " << text->getSenderName() << " - Read (0/1): " << text->isRead() << " - Message ID: ";
+    std::cout << text->getMessageId() << std::endl;
     std::cout << text->getMessageText() << std::endl;
 }
 
 void printChatMessages(User *user, int chatNumber) {
     auto itr = user->openAChat(chatNumber);
-    auto firstText = itr.openMessage();
-    for (int count = 0; count < itr.numberOfMessages(); count++) {
-        printMessageInfo(*firstText);
+    auto firstText = itr->openMessage();
+    for (int count = 0; count < itr->numberOfMessages(); count++) {
+        printMessageInfo(firstText->second);
         std::advance(firstText, 1);
     }
 }

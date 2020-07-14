@@ -16,14 +16,14 @@ int main() {
     program.addUser(luca);
     auto chat1 = new Chat (*alice, *luca, "luca <3");
     auto chat2 = new Chat(*alice, *olivia, "mamma <3");
-    auto text1 = new Message("Alice", "Luca", "Ciao amore, sono quasi arrivata!");
-   auto text2 = new Message("Luca", "Alice", "Amore, ti sto aspettando alla stazione");
+    auto text1 = new Message("Alice", "Luca", "Ciao amore, sono quasi arrivata!", 01);
+   auto text2 = new Message("Luca", "Alice", "Amore, ti sto aspettando alla stazione", 02);
     chat1->addMessage(*text1);
     chat1->addMessage(*text2);
 
 
-    auto text3 = new Message("Olivia", "Alice", "Stai studiando?");
-    auto text4 = new Message("Alice", "Olivia", "Sì, certo...");
+    auto text3 = new Message("Olivia", "Alice", "Stai studiando?", 03);
+    auto text4 = new Message("Alice", "Olivia", "Sì, certo...", 04);
 
     chat2->addMessage(*text3);
     chat2->addMessage(*text4);

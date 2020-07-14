@@ -24,4 +24,8 @@ void changeUserUsername (std::string newUsername, User * user);
 
 void printUnreadChats (User * user);
 
+bool noChats(User * user);
+
+void deleteAMessage(Chat* chat, int IDNum);
+
 #endif //PROGRAMMING_LAB_FUNCTIONS_H

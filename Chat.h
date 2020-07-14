@@ -6,6 +6,7 @@
 #define PROGRAMMING_LAB_CHAT_H
 
 #include <vector>
+#include <map>
 #include "User.h"
 #include "Message.h"
 
@@ -22,7 +23,7 @@ public:
 
 
     Message * getLastMessage() {
-        return chatMessages.back();
+        return chatMessages.rbegin()->second;
     }
 
     int numberOfMessages() {
@@ -31,7 +32,9 @@ public:
 
     int numOfUnreadMessages();
 
-    std::_List_iterator<Message *> openMessage();
+    std::_Rb_tree_iterator<std::pair<const int, Message *>> openMessage();
+
+    void deleteMessage(int ID);
 
 
     std::string getSenderName();
@@ -42,7 +45,7 @@ public:
 
 
 private:
-    std::list<Message*> chatMessages;
+    std::map<int, Message*> chatMessages;
     std::string senderName;
     std::string receiverName;
     std::string chatName;

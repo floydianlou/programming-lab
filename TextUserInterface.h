@@ -18,6 +18,10 @@ public:
     void mainMenu();
     void choices();
     void login();
+protected:
+
+    bool noChatsToOpen();
+
 };
 
 #endif //PROGRAMMING_LAB_TEXTUSERINTERFACE_H
