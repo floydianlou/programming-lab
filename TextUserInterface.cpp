@@ -21,15 +21,6 @@ void TextUserInterface::beginProgram() {
     }
 }
 
-bool TextUserInterface::noChatsToOpen() {
-    printChats(program->getCurrentUser());
-    if (noChats(program->getCurrentUser())) {
-        std::cout << "Taking user back to main menu." << std::endl;
-        return true;
-    } else {
-        return false;
-    }
-}
 
 void TextUserInterface::mainMenu() {
     std::cout << std::endl << "\t\t\t\t\t Hello, " << program->getCurrentUser()->getRealName() << "." << std::endl;
@@ -59,7 +50,8 @@ void TextUserInterface::choices() {
             break;
         case 2: {
             int chatNum;
-            if (noChatsToOpen()) {
+            printChats(program->getCurrentUser());
+            if (program->getCurrentUser()->noChats()) {
                 choices();
                 break;
             }
@@ -89,13 +81,15 @@ void TextUserInterface::choices() {
         case 5: {
             int ChatDelete;
             int IDDelete;
-            if(noChatsToOpen()) {
+            printChats(program->getCurrentUser());
+            if (program->getCurrentUser()->noChats()) {
                 choices();
                 break;
             }
             std::cout << "Insert the chat you would like to delete messages from: ";
             std::cin >> ChatDelete;
-            cinFail(); ChatDelete--;
+            cinFail();
+            ChatDelete--;
             printChatMessages(program->getCurrentUser(), ChatDelete);
             std::cout << "What message would you like to delete? Insert by message ID: " << std::endl;
             std::cin >> IDDelete;
@@ -104,7 +98,7 @@ void TextUserInterface::choices() {
             choices();
 
         }
-        break;
+            break;
         case 6: {
             std::cout << "Logging out..." << std::endl;
             std::cout << "See you next time." << std::endl;

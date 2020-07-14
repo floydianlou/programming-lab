@@ -31,12 +31,12 @@ public:
         return chats.size();
     }
 
-    void addChat(const Chat& chat);
+    void addChat(const Chat &chat);
 
     int getNumOfUnreadChats();
 
 
-    Chat * openAChat(int number);
+    Chat *openAChat(int number);
 
     bool noChats();
 

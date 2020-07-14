@@ -8,93 +8,67 @@
 #pragma ide diagnostic ignored "InfiniteRecursion"
 
 int main() {
-    auto alice = new User("Alice");
-    auto luca = new User ("Luca");
-    auto olivia = new User("Olivia");
 
-    ProgramManager program(alice);
-    program.addUser(luca);
-    auto chat1 = new Chat (*alice, *luca, "luca <3");
-    auto chat2 = new Chat(*alice, *olivia, "mamma <3");
-    auto text1 = new Message("Alice", "Luca", "Ciao amore, sono quasi arrivata!", 01);
-   auto text2 = new Message("Luca", "Alice", "Amore, ti sto aspettando alla stazione", 02);
-    chat1->addMessage(*text1);
-    chat1->addMessage(*text2);
+    try {
+        auto alice = new User("Alice");
+        auto luca = new User("Luca");
+        auto olivia = new User("Olivia");
+        auto margherita = new User("Margherita");
+
+        ProgramManager program(alice);
+        program.addUser(luca);
+        program.addUser(olivia);
+        program.addUser(margherita);
+
+        auto chat1 = new Chat(*alice, *luca, "luca <3");
+        auto chat2 = new Chat(*alice, *olivia, "mamma <3");
+        auto chat3 = new Chat(*margherita, *olivia, "Mamma");
+        auto chat4 = new Chat(*margherita, *alice, "Sorella");
 
 
-    auto text3 = new Message("Olivia", "Alice", "Stai studiando?", 03);
-    auto text4 = new Message("Alice", "Olivia", "Sì, certo...", 04);
+        auto text1 = new Message("Alice", "Luca", "Ciao amore, sono quasi arrivata!", 1);
+        auto text2 = new Message("Luca", "Alice", "Amore, ti sto aspettando alla stazione", 2);
+        auto text3 = new Message("Olivia", "Alice", "Stai studiando?", 3);
+        auto text4 = new Message("Alice", "Olivia", "Sì, certo...", 4);
+        auto text5 = new Message("Margherita", "Olivia", "Ho concluso il secondo capitolo.", 5);
+        auto text6 = new Message("Olivia", "Margherita", "Quando cominci il terzo?", 6);
+        auto text7 = new Message("Margherita", "Olivia", "Oggi mi riposo.", 7);
+        auto text8 = new Message("Margherita", "Alice", "Vengo a prenderti a Santa Maria Novella.", 8);
+        auto text9 = new Message("Alice", "Margherita", "Okay, grazie.", 9);
 
-    chat2->addMessage(*text3);
-    chat2->addMessage(*text4);
+        chat1->addMessage(*text1);
+        chat1->addMessage(*text2);
+        chat3->addMessage(*text5);
+        chat3->addMessage(*text6);
+        chat3->addMessage(*text7);
+        chat4->addMessage(*text8);
+        chat4->addMessage(*text9);
+        chat2->addMessage(*text3);
+        chat2->addMessage(*text4);
 
-    alice->addChat(*chat1);
-    alice->addChat(*chat2);
+        alice->addChat(*chat1);
+        luca->addChat(*chat1);
+        olivia->addChat(*chat2);
+        alice->addChat(*chat2);
+        alice->addChat(*chat4);
+        olivia->addChat(*chat3);
+        margherita->addChat(*chat3);
+        margherita->addChat(*chat4);
 
-    TextUserInterface interface(&program);
-    interface.beginProgram();
 
-//    try {
-//        // users
-//    auto alice = new User("Alice");
-//    auto luca = new User ("Luca");
-//    auto olivia = new User("Olivia");
-//    auto margherita = new User("Margherita");
-//
-//    Program program(alice);
-//
-//
-//    auto chat1 = new Chat (*alice, *luca, "luca <3");
-//    auto chat2 = new Chat(*alice, *olivia, "mamma <3");
-//    auto chat3 = new Chat(*margherita, *olivia, "Mamma");
-//    auto chat4 = new Chat (*margherita, *alice, "Sorella");
-//
-//    auto text1 = new Message("Alice", "Luca", "Ciao amore, sono quasi arrivata!");
-//    auto text2 = new Message("Luca", "Alice", "Amore, ti sto aspettando alla stazione");
-//    auto text3 = new Message("Olivia", "Alice", "Stai studiando?");
-//    auto text4 = new Message("Alice", "Olivia", "Sì, certo...");
-//    auto text5 = new Message ("Margherita", "Olivia", "Ho concluso il secondo capitolo.");
-//    auto text6 = new Message ("Olivia", "Margherita", "Quando cominci il terzo?");
-//    auto text7 = new Message ("Margherita", "Olivia", "Oggi mi riposo.");
-//    auto text8 = new Message ("Margherita", "Alice", "Vengo a prenderti a Santa Maria Novella.");
-//    auto text9 = new Message ("Alice", "Margherita", "Okay, grazie.");
-//
-//    chat2->addMessage(*text3);
-//    chat2->addMessage(*text4);
-//
-//    chat1->addMessage(*text1);
-//    chat1->addMessage(*text2);
-//    chat3->addMessage(*text5);
-//    chat3->addMessage(*text6);
-//    chat3->addMessage(*text7);
-//    chat4->addMessage(*text8);
-//    chat4->addMessage(*text9);
-//
-//    alice->addChat(*chat1);
-//    luca->addChat(*chat1);
-//    olivia->addChat(*chat2);
-//    alice->addChat(*chat2);
-//    alice->addChat(*chat4);
-//    olivia->addChat(*chat3);
-//    margherita->addChat(*chat3);
-//    margherita->addChat(*chat4);
-//
-//    program.addUser(luca);
-//    program.addUser(olivia);
-//    program.addUser(margherita);
-//
-//    program.init(); }
-//
-//    catch (std::out_of_range& e) {
-//        std::cerr << e.what() << std::endl;
-//        std::cout << "Rebooting..." << std::endl;
-//        main();
-//    }
-//    catch (std::invalid_argument& e) {
-//        std::cerr << e.what() << std::endl;
-//        std::cout << "Rebooting..." << std::endl;
-//        main();
-//    }
+        TextUserInterface interface(&program);
+        interface.beginProgram();
+    } catch (std::out_of_range &e) {
+        std::cerr << e.what() << std::endl;
+        std::cout << "Rebooting..." << std::endl;
+        main();
+    }
+    catch (std::invalid_argument &e) {
+        std::cerr << e.what() << std::endl;
+        std::cout << "Rebooting..." << std::endl;
+        main();
+    }
 
 }
+
 #pragma clang diagnostic pop

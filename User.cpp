@@ -11,7 +11,7 @@ void User::addChat(const Chat &chat) {
     chats.push_back(chat);
 }
 
-Chat * User::openAChat(int number) {
+Chat *User::openAChat(int number) {
     if (number >= 0 && number < chats.size()) {
         return &chats[number];
     } else {
@@ -22,8 +22,6 @@ Chat * User::openAChat(int number) {
 bool User::noChats() {
     return chats.empty();
 }
-
-
 
 
 int User::getNumOfUnreadChats() {

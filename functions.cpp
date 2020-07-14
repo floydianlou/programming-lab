@@ -40,12 +40,13 @@ void chatInfo(Chat itr) {
     std::cout << "Last message: ";
     auto message = itr.getLastMessage();
     auto time = timeToString(message->getCurrentTime());
-    std::cout << time << " from: " << message->getSenderName() << " - " << message->getMessageText(); std::cout << std::endl;
+    std::cout << time << " from: " << message->getSenderName() << " - " << message->getMessageText();
+    std::cout << std::endl;
     std::cout << "This chat has " << itr.numOfUnreadMessages() << " unread messages." << std::endl;
     std::cout << std::endl;
 }
 
-bool noChats(User * user) {
+bool noChats(User *user) {
     if (user->noChats()) {
         std::cout << "There are currently no chats in your account." << std::endl;
         return true;
@@ -55,7 +56,7 @@ bool noChats(User * user) {
 }
 
 void printChats(User *user) {
-    if(!noChats(user)) {
+    if (!noChats(user)) {
         for (int i = 0; i < user->numberOfChats(); i++) {
             auto itr = user->openAChat(i);
             std::cout << "Chat n. " << i + 1 << std::endl;
@@ -64,8 +65,8 @@ void printChats(User *user) {
     }
 }
 
-void printUnreadChats (User * user) {
-    if(!noChats(user)) {
+void printUnreadChats(User *user) {
+    if (!noChats(user)) {
         for (int i = 0; i < user->numberOfChats(); i++) {
             auto itr = user->openAChat(i);
             if (itr->numOfUnreadMessages() > 0) {
@@ -75,7 +76,7 @@ void printUnreadChats (User * user) {
     }
 }
 
-void deleteAMessage(Chat * chat, int IDNum) {
+void deleteAMessage(Chat *chat, int IDNum) {
     chat->deleteMessage(IDNum);
 }
 
@@ -102,7 +103,7 @@ void printChatMessages(User *user, int chatNumber) {
     }
 }
 
-void changeUserUsername (std::string newUsername, User * user) {
+void changeUserUsername(std::string newUsername, User *user) {
     user->setRealName(newUsername);
     std::cout << "Username changed to " << user->getRealName() << "." << std::endl;
 }

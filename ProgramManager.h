@@ -25,10 +25,10 @@ public:
 
     virtual ~ProgramManager();
 
-    bool isUsernameInList (std::string username);
+    bool isUsernameInList(std::string username);
 
 private:
-    User * currentUser;
+    User *currentUser;
     time_t currentTime;
     std::map<std::string, User *> allUsers;
 };

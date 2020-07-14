@@ -10,17 +10,19 @@
 class TextUserInterface : public Interface {
 public:
 
-    TextUserInterface(ProgramManager * prog) : Interface(prog) {
+    explicit TextUserInterface(ProgramManager *prog) : Interface(prog) {
 
     }
 
     void beginProgram() override;
-    void mainMenu();
-    void choices();
-    void login();
+
 protected:
 
-    bool noChatsToOpen();
+    void mainMenu();
+
+    void choices();
+
+    void login();
 
 };
 

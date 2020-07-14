@@ -22,7 +22,7 @@ public:
     void addMessage(Message &text);
 
 
-    Message * getLastMessage() {
+    Message *getLastMessage() {
         return chatMessages.rbegin()->second;
     }
 
@@ -45,7 +45,7 @@ public:
 
 
 private:
-    std::map<int, Message*> chatMessages;
+    std::map<int, Message *> chatMessages;
     std::string senderName;
     std::string receiverName;
     std::string chatName;

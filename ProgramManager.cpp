@@ -10,7 +10,6 @@ void ProgramManager::addUser(User *newuser) {
 }
 
 
-
 bool ProgramManager::isUsernameInList(std::string username) {
     auto itr = allUsers.find(username);
     if (itr != allUsers.end()) {

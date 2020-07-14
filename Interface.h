@@ -18,7 +18,7 @@ public:
     }
 
 protected:
-    ProgramManager * program;
+    ProgramManager *program;
 };
 
 #endif //PROGRAMMING_LAB_INTERFACE_H

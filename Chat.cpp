@@ -19,28 +19,29 @@ void Chat::addMessage(Message &text) {
     }
 }
 
- void Chat::deleteMessage(int ID) {
-   auto found = chatMessages.find(ID);
-   if(found != chatMessages.end()) {
-       chatMessages.erase(found);
-   } else {
-       throw std::out_of_range ("No message with such ID.");
-   }
- }
+void Chat::deleteMessage(int ID) {
+    auto found = chatMessages.find(ID);
+    if (found != chatMessages.end()) {
+        chatMessages.erase(found);
+    } else {
+        throw std::out_of_range("No message with such ID.");
+    }
+}
 
- std::_Rb_tree_iterator<std::pair<const int, Message *>> Chat::openMessage() {
+std::_Rb_tree_iterator<std::pair<const int, Message *>> Chat::openMessage() {
     for (auto &chatMessage : chatMessages) {
         if (!chatMessage.second->isRead()) {
             chatMessage.second->setRead(true);
-        } }
-       return chatMessages.begin();
+        }
+    }
+    return chatMessages.begin();
 }
 
 int Chat::numOfUnreadMessages() {
     int count = 0;
     for (auto itr: chatMessages) {
         if (!itr.second->isRead()) {
-            count ++;
+            count++;
         }
     }
     return count;
