@@ -17,8 +17,7 @@ TEST (functions, tests) {
     chat3.addMessage(mx);
     user4.addChat(chat3);
     ASSERT_EQ(chat3.numberOfMessages(), 1);
-    deleteAMessage(&chat3, 1);
-    ASSERT_EQ(chat3.numberOfMessages(), 0);
+    ASSERT_THROW(deleteAMessage(&chat3, 1), std::invalid_argument);
     changeUserUsername("floydianlou", &user4);
     ASSERT_EQ(user4.getRealName(), "floydianlou");
 }
