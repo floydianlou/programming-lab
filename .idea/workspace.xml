@@ -18,12 +18,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1cf4446d-57da-4590-b114-5a27937a72f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/functionsTest.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/chatTests.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/chatTests.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/programTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/programTest.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/userTest.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test/userTest.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Chat.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Chat.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TextUserInterface.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/TextUserInterface.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +77,7 @@
       <recent name="$PROJECT_DIR$/test" />
     </key>
   </component>
-  <component name="RunManager" selected="Google Test.All in runAllTests">
+  <component name="RunManager" selected="CMake Application.programming_lab">
     <configuration name="All in runAllTests" type="CMakeGoogleTestRunConfigurationType" factoryName="Google Test" nameIsGenerated="true" PASS_PARENT_ENVS_2="true" PROJECT_NAME="programming_lab" TARGET_NAME="runAllTests" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="programming_lab" RUN_TARGET_NAME="runAllTests" TEST_MODE="SUITE_TEST">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -150,7 +148,7 @@
       <workItem from="1594474647208" duration="7324000" />
       <workItem from="1594634563467" duration="18701000" />
       <workItem from="1594726376826" duration="3367000" />
-      <workItem from="1594738402019" duration="2758000" />
+      <workItem from="1594738402019" duration="4255000" />
     </task>
     <task id="LOCAL-00001" summary="First commit - working test directory, working libraries and chat system. Minor details to fix.">
       <created>1594202939694</created>
@@ -222,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594729724103</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Tenth commit - test files are back up working. Added source file to test functions returning values or throwing exceptions and modified the old ones. Corrected code form.">
+      <created>1594741676712</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1594741676712</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -253,7 +258,8 @@
     <MESSAGE value="Seventh commit - more changes regarding TextUserInterface building. Classes Chat, Message, User, ProgramManager now only return values which are later printed by high level functions or class TextUserInterface. Still several bugs and testing to be fixed." />
     <MESSAGE value="Eighth commit - added function and menu option to delete a chat message. Created function to know if the account has no chats, since it is used by more than one method." />
     <MESSAGE value="Ninth commit - deleted function implemented in last commit since it was just duplicating already implemented methods. Began TEST fixing for Message and Chat." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ninth commit - deleted function implemented in last commit since it was just duplicating already implemented methods. Began TEST fixing for Message and Chat." />
+    <MESSAGE value="Tenth commit - test files are back up working. Added source file to test functions returning values or throwing exceptions and modified the old ones. Corrected code form." />
+    <option name="LAST_COMMIT_MESSAGE" value="Tenth commit - test files are back up working. Added source file to test functions returning values or throwing exceptions and modified the old ones. Corrected code form." />
   </component>
   <component name="WindowStateProjectService">
     <state x="463" y="199" width="800" height="677" key="#Deployment" timestamp="1594202082447">
@@ -272,10 +278,10 @@
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
     <state x="606" y="286" width="524" height="502" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/67.27.1613.1023@67.27.1613.1023" timestamp="1593797255653" />
-    <state x="428" y="114" width="880" height="847" key="CommitChangelistDialog2" timestamp="1594729723715">
+    <state x="428" y="114" width="880" height="847" key="CommitChangelistDialog2" timestamp="1594741676366">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
-    <state x="428" y="114" width="880" height="847" key="CommitChangelistDialog2/67.27.1613.1023@67.27.1613.1023" timestamp="1594729723715" />
+    <state x="428" y="114" width="880" height="847" key="CommitChangelistDialog2/67.27.1613.1023@67.27.1613.1023" timestamp="1594741676366" />
     <state x="656" y="295" width="447" height="484" key="FileChooserDialogImpl" timestamp="1594207591543">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
@@ -284,22 +290,22 @@
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
     <state x="699" y="432" width="338" height="210" key="Github.ShareDialog/67.27.1613.1023@67.27.1613.1023" timestamp="1594729936676" />
-    <state width="1567" height="822" key="GridCell.Tab.0.bottom" timestamp="1594741330852">
+    <state width="1567" height="822" key="GridCell.Tab.0.bottom" timestamp="1594743628809">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
-    <state width="1567" height="822" key="GridCell.Tab.0.bottom/67.27.1613.1023@67.27.1613.1023" timestamp="1594741330852" />
-    <state width="1567" height="822" key="GridCell.Tab.0.center" timestamp="1594741330852">
+    <state width="1567" height="822" key="GridCell.Tab.0.bottom/67.27.1613.1023@67.27.1613.1023" timestamp="1594743628809" />
+    <state width="1567" height="822" key="GridCell.Tab.0.center" timestamp="1594743628807">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
-    <state width="1567" height="822" key="GridCell.Tab.0.center/67.27.1613.1023@67.27.1613.1023" timestamp="1594741330852" />
-    <state width="1567" height="822" key="GridCell.Tab.0.left" timestamp="1594741330851">
+    <state width="1567" height="822" key="GridCell.Tab.0.center/67.27.1613.1023@67.27.1613.1023" timestamp="1594743628807" />
+    <state width="1567" height="822" key="GridCell.Tab.0.left" timestamp="1594743628806">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
-    <state width="1567" height="822" key="GridCell.Tab.0.left/67.27.1613.1023@67.27.1613.1023" timestamp="1594741330851" />
-    <state width="1567" height="822" key="GridCell.Tab.0.right" timestamp="1594741330852">
+    <state width="1567" height="822" key="GridCell.Tab.0.left/67.27.1613.1023@67.27.1613.1023" timestamp="1594743628806" />
+    <state width="1567" height="822" key="GridCell.Tab.0.right" timestamp="1594743628807">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
-    <state width="1567" height="822" key="GridCell.Tab.0.right/67.27.1613.1023@67.27.1613.1023" timestamp="1594741330852" />
+    <state width="1567" height="822" key="GridCell.Tab.0.right/67.27.1613.1023@67.27.1613.1023" timestamp="1594743628807" />
     <state x="218" y="113" width="1290" height="848" key="MergeDialog" timestamp="1594478886483">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
@@ -320,10 +326,10 @@
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
     <state x="529" y="365" key="com.intellij.ide.util.TipDialog/67.27.1613.1023@67.27.1613.1023" timestamp="1594738403185" />
-    <state x="641" y="457" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594741336910">
+    <state x="641" y="457" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1594743737398">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>
-    <state x="641" y="457" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1613.1023@67.27.1613.1023" timestamp="1594741336910" />
+    <state x="641" y="457" width="454" height="160" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/67.27.1613.1023@67.27.1613.1023" timestamp="1594743737398" />
     <state x="536" y="250" width="672" height="678" key="search.everywhere.popup" timestamp="1594727206044">
       <screen x="67" y="27" width="1613" height="1023" />
     </state>

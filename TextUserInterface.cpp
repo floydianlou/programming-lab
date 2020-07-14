@@ -32,7 +32,7 @@ void TextUserInterface::mainMenu() {
 
 void TextUserInterface::choices() {
     int choice;
-    std::cout << "\t\t\t\t\t-----------------------------" << std::endl;
+    std::cout << "\t\t\t\t\t-----------------------------" << std::endl << std::endl;
     std::cout << "What would you like to do next?" << std::endl;
     std::cout << "(1) See all chats." << std::endl << "(2) Open a chat." << std::endl << "(3) Get unread chats."
               << std::endl
@@ -66,6 +66,7 @@ void TextUserInterface::choices() {
             break;
         case 3: {
             numOfUnreadChats(program->getCurrentUser());
+            std::cout << std::endl;
             printUnreadChats(program->getCurrentUser());
             choices();
         }

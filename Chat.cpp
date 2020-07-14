@@ -21,6 +21,9 @@ void Chat::addMessage(Message &text) {
 
 void Chat::deleteMessage(int ID) {
     auto found = chatMessages.find(ID);
+    if(chatMessages.size() == 1) {
+        throw std::invalid_argument ("You can't delete the last message of a chat!");
+    }
     if (found != chatMessages.end()) {
         chatMessages.erase(found);
     } else {
